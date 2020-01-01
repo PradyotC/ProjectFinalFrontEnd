@@ -1,0 +1,90 @@
+<carousel [interval]="4000" [(activeSlide)]="activeSlideIndex" [itemsPerSlide]="1">
+  <slide *ngFor="let slide of slides">
+    <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;" />
+
+    <div class="carousel-caption">
+      <h4>Slide {{slides.indexOf(slide)}}</h4>
+    </div>
+  </slide>
+</carousel>
+<br />
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">Latest products</div>
+        <div class="card-body">
+          <carousel class="carousel2" [interval]="4000" [(activeSlide)]="activeSlideIndex1" [showIndicators]="false" [itemsPerSlide]="1">
+            <slide *ngFor="let x of pages">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let y of pageItem">
+                    <div class="card">
+                      <img class="card-img-top img-fluid" src="{{(slides2[(x*3)+y].image)}}" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                          of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </slide>
+          </carousel>
+          <br />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="overflow:hidden;">
+        <div class="card-body">
+          <div class="card container-fluid" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">Products on Offer</div>
+        <div class="card-body">
+          <carousel class="carousel3" [interval]="4000" [(activeSlide)]="activeSlideIndex2" [showIndicators]="false" [itemsPerSlide]="1">
+            <slide *ngFor="let x2 of pages">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-3" *ngFor="let y2 of pageItem2">
+                    <div class="card">
+                      <img class="card-img-top img-fluid" src="{{(slides3[(x2*3)+y2].image)}}" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                          of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </slide>
+          </carousel>
+      </div>
+    </div>
+  </div>
+</div>

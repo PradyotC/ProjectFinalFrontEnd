@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col-md-6 mx-auto"
+      style="background-color: white; border-radius: 5px; display: block; "
+    >
+      <div class="container">
+        <form [formGroup]="userForm" (ngSubmit)="Save(userForm.value)">
+          <div class="form-group">
+            <br />
+            <div formGroupName="UserLogin">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="text-center">Login</h3>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Email Id:</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    name=""
+                    id="t1"
+                    class="form-control"
+                    placeholder="Enter email"
+                    aria-describedby="helpId"
+                    formControlName="userEmail"
+                    [class.is-valid]="
+                      userForm['controls'].UserLogin['controls'].userEmail.valid
+                    "
+                    [class.is-invalid]="
+                      !userForm['controls'].UserLogin['controls'].userEmail
+                        .valid &&
+                      userForm['controls'].UserLogin['controls'].userEmail
+                        .touched
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    Email is required
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Password:</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <input
+                    type="password"
+                    name=""
+                    id="p1"
+                    class="form-control"
+                    placeholder="Enter password"
+                    aria-describedby="helpId"
+                    formControlName="userPassword"
+                    [class.is-valid]="
+                      userForm['controls'].UserLogin['controls'].userPassword
+                        .valid
+                    "
+                    [class.is-invalid]="
+                      !userForm['controls'].UserLogin['controls'].userPassword
+                        .valid &&
+                      userForm['controls'].UserLogin['controls'].userPassword
+                        .touched
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    Password is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <h6 class="text-center"><a href="#">Forgot Password?</a></h6>
+              </div>
+            </div>
+            <div class="row">
+              <button
+                type="submit"
+                class="col-md-6 btn btn-primary mx-auto"
+                [disabled]="!userForm.valid"
+              >
+                Login
+              </button>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <h6 class="text-center">New User?</h6>
+              </div>
+              <a type="button" class="col-md-6 btn btn-primary mx-auto" href="/register">
+                Register
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

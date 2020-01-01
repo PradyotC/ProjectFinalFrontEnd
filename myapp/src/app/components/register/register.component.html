@@ -1,0 +1,207 @@
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col-md-6 mx-auto"
+      style="background-color: white; border-radius: 5px; display: block; "
+    >
+      <div class="container">
+        <form [formGroup]="userForm" (ngSubmit)="Save(userForm.value)">
+          <div class="form-group">
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="text-center">Register</h3>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-3">
+                <label style="line-height: 2.5;">First Name:</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  name=""
+                  id="fn1"
+                  class="form-control"
+                  placeholder="Enter First Name"
+                  aria-describedby="helpId"
+                  formControlName="firstName"
+                  [class.is-valid]="userForm['controls'].firstName.valid"
+                  [class.is-invalid]="
+                    !userForm['controls'].firstName.valid &&
+                    userForm['controls'].firstName.touched
+                  "
+                  
+                />
+                <div class="invalid-feedback">
+                  First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label style="line-height: 2.5;">Last Name:</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  name=""
+                  id="ln1"
+                  class="form-control"
+                  placeholder="Enter Last Name"
+                  aria-describedby="helpId"
+                  formControlName="lastName"
+                  [class.is-valid]="userForm['controls'].lastName.valid"
+                  [class.is-invalid]="
+                    !userForm['controls'].lastName.valid &&
+                    userForm['controls'].lastName.touched
+                  "
+                />
+                <div class="invalid-feedback">
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+            <div formGroupName="UserLogin">
+              <div class="row">
+                <div class="col-md-3">
+                  <label style="line-height: 2.5;">Email Id:</label>
+                </div>
+                <div class="col-md-9">
+                  <input
+                    type="email"
+                    name=""
+                    id="e1"
+                    class="form-control"
+                    placeholder="Enter Email ID"
+                    aria-describedby="helpId"
+                    formControlName="userEmail"
+                    [class.is-valid]="
+                      userForm['controls'].UserLogin['controls'].userEmail.valid
+                    "
+                    [class.is-invalid]="
+                      !userForm['controls'].UserLogin['controls'].userEmail
+                        .valid &&
+                      userForm['controls'].UserLogin['controls'].userEmail
+                        .touched
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    Email is required
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <label style="line-height: 2.5;">Password:</label>
+                </div>
+                <div class="col-md-9">
+                  <input
+                    type="text"
+                    name=""
+                    id="p1"
+                    class="form-control"
+                    placeholder="Enter Password"
+                    aria-describedby="helpId"
+                    formControlName="userPassword"
+                    [class.is-valid]="
+                      userForm['controls'].UserLogin['controls'].userPassword
+                        .valid
+                    "
+                    [class.is-invalid]="
+                      !userForm['controls'].UserLogin['controls'].userPassword
+                        .valid &&
+                      userForm['controls'].UserLogin['controls'].userPassword
+                        .touched
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    Password is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label style="line-height: 2.5;">Address:</label>
+              </div>
+              <div class="col-md-9">
+                <textarea
+                  id="a1"
+                  class="form-control"
+                  placeholder="Enter Address"
+                  formControlName="address"
+                  [class.is-valid]="userForm['controls'].address.valid"
+                  [class.is-invalid]="
+                    !userForm['controls'].address.valid &&
+                    userForm['controls'].address.touched
+                  "
+                ></textarea>
+                <div class="invalid-feedback">
+                  Address is required
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name=""
+                        id="tc1"
+                        value="checkedValue"
+                        formControlName="termsAcceptCheck"
+                        [class.is-valid]="
+                          userForm.value['termsAcceptCheck'] &&
+                          userForm['controls'].termsAcceptCheck.touched
+                        "
+                        [class.is-invalid]="
+                          !userForm.value['termsAcceptCheck'] &&
+                          userForm['controls'].termsAcceptCheck.touched
+                        "
+                      />
+                      Accept Terms and Conditions
+                      <div class="invalid-feedback">
+                        Please check Terms and Conditions
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-check-label">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          name=""
+                          id="nl1"
+                          value="checkedValue"
+                          formControlName="newsLetterCheck"
+                        />
+                        Get News and Updates
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <button
+                type="submit"
+                class="col-md-6 btn btn-primary mx-auto"
+                [disabled]="
+                  !userForm.valid || !userForm.value['termsAcceptCheck']
+                "
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

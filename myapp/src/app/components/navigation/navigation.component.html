@@ -1,0 +1,103 @@
+<nav ngxNavbar class="navbar sticky-top navbar-expand-lg navbar-dark bg-info text-white">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+        (click)="collapse.toggle()">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand"><i class="fa fa-shopping-bag" aria-hidden="true"></i> SmartShop</a>
+    <ngx-navbar-collapse #collapse="ngxNavbarCollapse">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ">
+            <li class="nav-item" *ngIf="!userLoginFlag">
+                <a class="nav-link">
+                    <i class="fa fa-user-circle-o" aria-hidden="true">
+                        <span class="badge badge-danger">11</span>
+                    </i>
+                    {{userName}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="openModal(template)">
+                    <i class="fa fa-shopping-cart" aria-hidden="true">
+                        <span class="badge badge-success">11</span>
+                    </i>
+                    Cart
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="userLoginFlag">
+                <a class="nav-link" href="/login">
+                    {{logMessage}}
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!userLoginFlag">
+                <a class="nav-link" (click)="Logout()">
+                    {{logMessage}}
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </ngx-navbar-collapse>
+</nav>
+
+<nav ngxNavbar class="navbar navbar-expand-lg navbar-dark bg-secondary">
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li dropdown [autoClose]="true" container="body" class="nav-item" *ngFor="let menuItem of menuList">
+            <a id="button-nested" dropdownToggle class="dropdown-toggle nav-link" aria-controls="dropdown-nested">
+                {{menuItem}}
+                <span class="caret"></span>
+            </a>
+            <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
+                <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body" *ngFor="let y of electronicsList">
+                    <a dropdownToggle class="dropdown-item" href="products/{{y.categoryName}}" [ngClass]="(y.subCategoryList)?('dropdown-toggle'):('')" >{{y.categoryName}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                        <li role="menuitem" *ngFor="let x of y.subCategoryList"><a class="dropdown-item"
+                                 href="products/{{y.categoryName}}/{{x}}">{{x}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Cart</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    {{cartData()}}                            
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" btn-lg btn-block>Clear</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" btn-lg btn-block [disabled]="userLoginFlag">Proceed to Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

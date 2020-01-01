@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+.carousel2 div a .icon-prev{
+    background-color:rgb(0, 115, 255); 
+    border-radius: 10px;
+    position: relative;
+    left:   -5vw;
+}
+
+.carousel2 div a .icon-next{
+    position: relative;
+    right:    -5vw;
+    background-color:rgb(0, 115, 255); 
+    border-radius: 10px;
+}
+
+.carousel3 div a .icon-prev{
+    background-color:rgb(0, 115, 255); 
+    border-radius: 10px;
+    position: relative;
+    left:   -7vw;
+}
+
+.carousel3 div a .icon-next{
+    position: relative;
+    right:    -7vw;
+    background-color:rgb(0, 115, 255); 
+    border-radius: 10px;
+}
