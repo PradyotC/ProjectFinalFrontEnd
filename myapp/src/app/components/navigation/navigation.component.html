@@ -47,11 +47,11 @@
         </ul>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-success my-2 my-sm-0" style="color: white;" type="submit"><i class="fa fa-search"
+                    aria-hidden="true"></i></button>
         </form>
     </ngx-navbar-collapse>
 </nav>
-
 <nav ngxNavbar class="navbar navbar-expand-lg navbar-dark bg-secondary">
 
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -61,41 +61,38 @@
                 <span class="caret"></span>
             </a>
             <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
-                <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body" *ngFor="let y of electronicsList">
-                    <a dropdownToggle class="dropdown-item" href="products/{{y.categoryName}}" [ngClass]="(y.subCategoryList)?('dropdown-toggle'):('')" >{{y.categoryName}}
+                <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body"
+                    *ngFor="let y of electronicsList">
+                    <a dropdownToggle class="dropdown-item" href="products/{{y.categoryName}}"
+                        [ngClass]="(y.subCategoryList)?('dropdown-toggle'):('')">{{y.categoryName}}
                         <span class="caret"></span>
                     </a>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
                         <li role="menuitem" *ngFor="let x of y.subCategoryList"><a class="dropdown-item"
-                                 href="products/{{y.categoryName}}/{{x}}">{{x}}</a></li>
+                                href="products/{{y.categoryName}}/{{x}}">{{x}}</a></li>
                     </ul>
                 </li>
             </ul>
         </li>
     </ul>
 </nav>
-
 <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Cart</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        <h4 class="modal-title pull-left">Cart</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    {{cartData()}}                            
-                </div>
-            </div>
-            <br>
+            <app-cart></app-cart>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" btn-lg btn-block>Clear</button>
+                    <button type="button" class="btn btn-primary" btn-lg btn-block (click)="clearCart()">Clear</button>
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" btn-lg btn-block [disabled]="userLoginFlag">Proceed to Pay</button>
+                    <button type="button" class="btn btn-primary" btn-lg btn-block [disabled]="userCheck">Proceed to
+                        Pay</button>
                 </div>
             </div>
         </div>

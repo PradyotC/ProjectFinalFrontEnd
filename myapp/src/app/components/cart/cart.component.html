@@ -1,0 +1,45 @@
+        <div class="row" *ngIf="!userCartCheck">
+            <div class="col-md-12">Cart is currently empty</div>
+        </div>
+        <div class="row" *ngIf="userCartCheck">
+            <div class="col-md-12" *ngFor="let x of userCartData">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <b>{{x['name']}}:</b>
+                        </div>
+                        <div class="col-md-3  text-right">
+                            <i class="fa fa-inr" aria-hidden="true"></i>{{x['price']}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            Quantity
+                        </div>
+                        <div class="col-md-3 text-right">
+                            X&nbsp;{{x['quantity']}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9"></div>
+                        <div class="col-md-3 text-right border-bottom-0 border-left-0 border-right-0" style="border: 2px solid black;">
+                            <i class="fa fa-inr" aria-hidden="true"></i>{{x['totalPrice']}}
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <b>Total Price:</b>
+                        </div>
+                        <div class="col-md-5 text-right">
+                            <i class="fa fa-inr" aria-hidden="true"></i><b>{{userCartTotal}}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>

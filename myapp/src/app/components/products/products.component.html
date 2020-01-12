@@ -1,35 +1,51 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+<div class="row">
     <div class="col-md-12">
-      <div class="content-wrapper">
-        <p class="content-item" *ngFor="let content of nameArray">
-          {{ content }}
-        </p>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-md-4" *ngFor="let content of nameArray">
+            <div class="card">
+              <a href="http://localhost:4200/products/details/{{content['_id']}}"><img src="{{content['image']}}" class="img-fluid img-responsive" alt="{{content['_id']}}"></a>
+              <div class="card-body">
+                <a href="http://localhost:4200/products/details/{{content['_id']}}"><h5 class="card-title text-truncate"><u>{{content['name']}}</u></h5></a>
+                <div class="container-fluid">
+                  <div class="row">
+                    <p class="card-text text-truncate">{{content['description']}}</p>
+                  </div>
+                  <div class="row"  style="font-size: 20px;">
+                    <div class="card-text text-truncate" *ngIf="!content['isTodayOffer']"><i class="fa fa-inr"
+                        aria-hidden="true"></i>{{content['price']}}</div>
+                    <div class="card-text text-truncate" *ngIf="content['isTodayOffer']"><i class="fa fa-inr"
+                        aria-hidden="true"></i><del>{{content['price']}}</del>&nbsp;&nbsp;</div>
+                    <div class="card-text text-truncate" *ngIf="content['isTodayOffer']"><i class="fa fa-inr"
+                        aria-hidden="true"></i>{{content['offerPrice']}}</div>
+                  </div>
+                </div>
+                <br>
+                <div class="row mx-auto">
+                  <button type="button" class="btn btn-primary" (click)="cartServices.printThis(content['_id'])">Add to cart</button>
+                  &nbsp;&nbsp;&nbsp;
+                  <button type="button" [disabled]="productDetailServices.isUser()" class="btn btn-primary">Buy Now</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <br>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
       <button class="btn btn-primary" [disabled]="pagenumber<=1" type="button"
         (click)="clickPrevious()">Previous</button>
     </div>
     <div class="col-md-4 text-center">
       Page {{pagenumber}} out of Page {{pageSize}}
     </div>
-    <div class="col-md-4 float-right">
+    <div class="col-md-3 float-right">
       <button class="btn btn-primary" [disabled]="pagenumber>=pageSize" (click)="clickNext()">Next</button>
     </div>
+    <div class="col-md-1"></div>
   </div>
-
-
-  <!--       <div class="col-md-12">
-        <pagination
-          [totalItems]="totalProducts"
-          [(ngModel)]="pagenumber"
-          (pageChanged)="pageChanged($event)"
-          [rotate]="rotate"
-          [maxSize]="maxSize"
-          [itemsPerPage]="perPage"
-        ></pagination>
-      </div>-->
 </div>

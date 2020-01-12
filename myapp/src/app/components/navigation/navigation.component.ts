@@ -41,6 +41,7 @@ export class NavigationComponent implements OnInit {
       subCategoryList: ["Covers", "Cables", "Chargers", "Headphones"]
     }
   ];
+  protected userCheck: boolean = !localStorage.getItem('currentUser');
 
   constructor(
     private loginServices: LoginServices,
@@ -67,12 +68,13 @@ export class NavigationComponent implements OnInit {
     this.loginServices.UserLogout();
   }
 
-  cartData(): string {
-    if (!localStorage.getItem("userCart")) return "Cart is currently empty";
-  }
-
   subListLogicInverter(){
     this.subListLogic= !this.subListLogic;
+  }
+
+  clearCart() {
+    localStorage.removeItem('userCart');
+    this.modalRef.hide();
   }
 
   ngOnInit() {}

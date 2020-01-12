@@ -1,7 +1,10 @@
-<app-navigation></app-navigation>
+<app-navigation (scroll)="scrollHandler($event)"></app-navigation>
 <br>
 <br>
-<router-outlet></router-outlet>
+<router-outlet (scroll)="scrollHandler($event)"></router-outlet>
 <br>
+<div class="floatbutton"  *ngIf="floatButtonVisibility" (click)="getTop()">
+    <i class="fa fa-caret-up" aria-hidden="true"></i>
+</div>
 <br>
-<app-footer></app-footer> 
+<app-footer (scroll)="scrollHandler($event)"></app-footer> 

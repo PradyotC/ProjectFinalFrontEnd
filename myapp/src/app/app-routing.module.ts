@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 const routes: Routes = [
@@ -32,8 +33,8 @@ const routes: Routes = [
     component: ProductsComponent
   },
   {
-    path:'products/Category/:id',
-    component: ProductsComponent
+    path:'products/details/:id',
+    component: ProductDetailsComponent
   }
 ];
 

@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterServices } from './shared/services/register.services';
 import { ProductsComponent } from './components/products/products.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ModalModule } from 'ngx-bootstrap';
     LoginComponent,
     RegisterComponent,
     ProductsComponent,
+    ForgotPasswordComponent,
+    CartComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

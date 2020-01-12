@@ -1,0 +1,14 @@
+.floatbutton{
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: fixed;
+    background-color: black;
+    z-index: 6;
+    border-radius: 15px;
+    bottom: 60px;
+    right: 20px;
+    color: white;
+    cursor: pointer;
+}

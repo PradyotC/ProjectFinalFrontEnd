@@ -1,0 +1,31 @@
+<div class="container-fluid" *ngIf="productData">
+    <div class="row">
+        <div class="col-lg-3">
+            <img src="{{productData['image']}}" class="img-fluid" alt="{{productData['_id']}}">
+        </div>
+        <div class="col-lg-9">
+            <h5 class="card-title text-truncate"><u>{{productData['name']}}</u></h5>
+            <div class="container-fluid">
+                <div class="row">
+                    <p class="card-text">{{productData['description']}}</p>
+                </div>
+                <br>
+                <div class="row" style="font-size: 20px;">
+                    <div class="card-text" *ngIf="!productData['isTodayOffer']"><i class="fa fa-inr"
+                            aria-hidden="true"></i>{{productData['price']}}</div>
+                    <div class="card-text" *ngIf="productData['isTodayOffer']"><i class="fa fa-inr"
+                            aria-hidden="true"></i><del>{{productData['price']}}</del>&nbsp;&nbsp;</div>
+                    <div class="card-text" *ngIf="productData['isTodayOffer']"><i class="fa fa-inr"
+                            aria-hidden="true"></i>{{productData['offerPrice']}}</div>
+                </div>
+            </div>
+            <br>
+            <div class="row mx-auto">
+                <button type="button" class="btn btn-primary" (click)="cartServices.printThis(productData['_id'])">Add
+                    to cart</button>
+                &nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary" [disabled]="productDetailServices.isUser()">Buy
+                    Now</button></div>
+        </div>
+    </div>
+</div>
